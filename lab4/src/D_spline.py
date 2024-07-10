@@ -13,7 +13,7 @@ for i in range(len(decompositions)):
     extX = np.linspace(left, right, 3 * k, endpoint=True)
     y = 8 * np.exp(x) * np.cos(x * x)
     extY = 8 * np.exp(extX) * np.cos(extX * extX)
-    polynom = intp.interp1d(x[:-2], y[:-2], kind='quadratic', fill_value="extrapolate")
+    polynom = intp.interp1d(x[:-2], y[:-2], kind='cubic', fill_value="extrapolate")
 
     axisA.plot(extX, np.abs(extY - polynom(extX)), label=f'{k}')
     axisB[i // 2][i % 2].plot(extX, extY, label='f(x)')
